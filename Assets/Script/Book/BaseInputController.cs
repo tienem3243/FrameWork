@@ -15,6 +15,7 @@ public class BaseInputController : MonoBehaviour
     public bool shoundRespawn;
     public Vector3 TEMPVector3;
     public float moveSpeed;
+    public bool interact;
     private void Update()
     {
         CheckInput();
@@ -22,8 +23,14 @@ public class BaseInputController : MonoBehaviour
     }
     public virtual void CheckInput()
     {
+        //movement
         horzt = Input.GetAxis("Horizontal");
         vert = Input.GetAxis("Vertical");
+       //interact
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            interact = true;
+        }
     }
     public virtual float GetVertical()
     {
@@ -40,6 +47,10 @@ public class BaseInputController : MonoBehaviour
     public virtual bool GetRespawn()
     {
         return shoundRespawn;
+    }
+    public virtual bool GetInteract()
+    {
+        return interact;
     }
     public virtual Vector3 GetMovementDirectVector()
     {
